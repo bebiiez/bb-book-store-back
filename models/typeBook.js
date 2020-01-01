@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     typeBook.associate = (models) => {
-        typeBook.hasMany(models.book)
+        typeBook.hasMany(models.book, {foreignKey: 'typeId'})
     }
     return typeBook
 }

@@ -19,15 +19,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         bookPrice: {
-            type: DataTypes.DECIMAL(10,2)
+            type: DataTypes.DECIMAL(10, 2)
         },
         bookPicture: {
             type: DataTypes.STRING(500)
         }
     })
 
-    book.associate = (models) =>{
-        book.belongsTo(models.typeBook)
+    book.associate = (models) => {
+        book.belongsTo(models.typeBook, { foreignKey: 'typeId' })
+        book.belongsToMany(models.cart, { through: 'cartBook' })
+        book.hasMany(models.bookOrder, { foreignKey: 'bookId' })
     }
 
     return book
