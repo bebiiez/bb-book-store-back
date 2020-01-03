@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255)
         },
         userMobile: {
-            type: DataTypes.STRING(50)
+            type: DataTypes.STRING(10)
         },
         userAddress: {
             type: DataTypes.STRING(500)

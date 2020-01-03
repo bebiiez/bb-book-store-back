@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     bill.associate = (models) => {
-        bill.hasMany(models.bookOrder, {foreiegnKey: 'billId'})
-        bill.belongsTo(models.user, {foreiegnKey: 'userId'})
+        bill.hasMany(models.book_order, {foreignKey: 'billId'})
+        bill.belongsTo(models.user, {foreignKey: 'userId'})
     }
 
     return bill

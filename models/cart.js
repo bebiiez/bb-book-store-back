@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const cart = sequelize.define('cart', {
-        cartAmout: {
+        cartAmount: {
             type: DataTypes.INTEGER
         },
         cartTotalPrice: {
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     cart.associate = (models) => {
-        cart.belongsToMany(models.book, {through: 'cartBook'})
+        cart.belongsToMany(models.book, {through: models.cart_book})
         cart.belongsTo(models.user, {foreignKet: 'userId'})
     }
 

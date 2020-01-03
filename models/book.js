@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         bookAuthor: {
             type: DataTypes.STRING(200)
         },
-        bookAmout: {
+        bookAmount: {
             type: DataTypes.INTEGER
         },
         bookPrice: {
@@ -27,9 +27,9 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     book.associate = (models) => {
-        book.belongsTo(models.typeBook, { foreignKey: 'typeId' })
-        book.belongsToMany(models.cart, { through: 'cartBook' })
-        book.hasMany(models.bookOrder, { foreignKey: 'bookId' })
+        book.belongsTo(models.type_book, { foreignKey: 'typeId' })
+        book.belongsToMany(models.cart, { through: models.cart_book })
+        book.hasMany(models.book_order, { foreignKey: 'bookId' })
     }
 
     return book
