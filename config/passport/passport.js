@@ -83,29 +83,27 @@ const opts = {
     secretOrKey: jwtOption.secretOrKey,
 };
 
-passport.use(
-    'jwt',
-    new JWTStrategy(opts, (jwt_payload, done) => {
-        try {
-            console.log("test")
-            db.user.findOne({
-                where: {
-                    id: jwt_payload.id,
-                },
-            }).then(user => {
-                if (user) {
-                    console.log('user found in db in passport');
-                    done(null, user);
-                } else {
-                    console.log('user not found in db');
-                    done(null, false);
-                }
-            });
-        } catch (err) {
-            console.log(err)
-            done(err);
-        }
-    }),
+passport.use('jwt', new JWTStrategy(opts, (jwt_payload, done) => {
+    try {
+        console.log("test")
+        db.user.findOne({
+            where: {
+                id: jwt_payload.id,
+            },
+        }).then(user => {
+            if (user) {
+                console.log('user found in db in passport');
+                done(null, user);
+            } else {
+                console.log('user not found in db');
+                done(null, false);
+            }
+        });
+    } catch (err) {
+        console.log(err)
+        done(err);
+    }
+}),
 );
 
 module.exports = { jwtOption, BCRYPT_SALT_ROUNDS }

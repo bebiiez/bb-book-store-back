@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         bookPrice: {
-            type: DataTypes.DECIMAL(10, 2)
+            type: DataTypes.FLOAT(2)
         },
         bookPicture: {
             type: DataTypes.STRING(500)
